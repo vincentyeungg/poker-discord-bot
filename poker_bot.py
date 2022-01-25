@@ -5,8 +5,6 @@ import discord
 load_dotenv()
 token = os.getenv('BOT_TOKEN')
 
-# _TOKEN = 'OTM1MDE2NjM2NjQwMDA2MjE1.Ye4gGQ.qlk8aY0jpo-4gNzQgc39SFla_x4'
-
 # setup connection to discord
 client = discord.Client()
 

@@ -24,6 +24,11 @@ class Card:
         "Jack", "Queen", "King", "Ace"
     )
 
+    @classmethod
+    def generate_standard_52_cards(cls):
+        # generate the standard 52 cards with the suit and ranks
+        return [cls(rank=rank, suit=suit) for rank in cls.RANKS for suit in cls.SUITS]
+
     def __init__(self, rank, suit):
         # rank and suit must be one of the items in their respective tuples to be valid
         if rank not in self.RANKS:
@@ -39,6 +44,9 @@ class Card:
 
     def __str__(self):
         return f"{self.rank} of {self.suit}"
+
+    def __repr__(self):
+        return f"Card{self.rank}, {self.suit}"
 
     def __eq__(self, other):
         return self.rank == other.rank and self.suit == other.suit

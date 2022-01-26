@@ -12,6 +12,13 @@ def test_can_create_card_with_valid_parameters(nine_of_spades):
     assert nine_of_spades.rank == "9" and nine_of_spades.suit == "Spades"
 
 
+def test_creates_standard_52_cards():
+    # create 52 standard cards
+    standard_cards = Card.generate_standard_52_cards()
+    assert standard_cards[0] == Card(rank="2", suit="Clubs")
+    assert standard_cards[-1] == Card(rank="Ace", suit="Spades")
+
+
 def test_exception_thrown_when_creating_card_with_invalid_rank_parameters():
     # make sure exception is raised if rank parameter isn't valid
     with pytest.raises(ValueError) as ex:
@@ -34,6 +41,10 @@ def test_card_has_card_value_of_rank_and_suit(nine_of_spades):
 def test_has_string_representation_with_suit_and_rank(nine_of_spades):
     # override the __str__()
     assert str(nine_of_spades) == "9 of Spades"
+
+
+def test_has_technical_representation(nine_of_spades):
+    assert (repr(nine_of_spades), "Card('9', 'Spades')")
 
 
 def test_card_has_four_possible_suit_options():

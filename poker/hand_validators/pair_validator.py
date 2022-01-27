@@ -7,7 +7,7 @@ class PairValidator(ValidatorHelpers):
     """
 
     def __init__(self, cards):
-        super().__init__()
+        super().__init__(cards)
         self.cards = cards
         self.name = "Pair"
 

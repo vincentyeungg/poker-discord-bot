@@ -1,4 +1,7 @@
 class ValidatorHelpers:
+    def __init__(self, cards):
+        self.cards = cards
+
     def _ranks_with_counts(self, count):
         """ returns a dictionary with items that have a specified count """
         return {

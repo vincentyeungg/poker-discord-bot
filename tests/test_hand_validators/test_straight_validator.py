@@ -29,7 +29,7 @@ def test_validates_hand_is_straight(testing_cards):
 
 
 def test_returns_straight_name(testing_cards):
-    validator = StraightValidator(cards=testing_cards)
+    validator = StraightValidator(testing_cards)
     assert validator.name == "Straight"
 
 

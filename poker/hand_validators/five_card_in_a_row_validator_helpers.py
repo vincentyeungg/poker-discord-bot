@@ -69,20 +69,25 @@ class FiveCardInARowValidatorHelper:
         # returns a list of possible lists of 5 consecutive cards of the same rank, else return an empty list
 
         # extract the cards that have the same suit
-        
+        # need to have at least 5 cards of the same suit
+        same_suit_cards = [card for card in self.cards if card.suit in self._suits_with_counts(5)]
 
+        index = 0
+        final_index = len(same_suit_cards) - 1
+        collections_of_straight_flushes = []
 
-        # straight_flush_cards = []
-        # for card_list in self._collections_of_five_straight_cards_in_a_row:
-        #     # use a set to remove any duplicates
-        #     suits_seen = set()
-        #     for card in card_list:
-        #         suits_seen.add(card.suit)
-        #     # if the suits_seen only contains one suit, then all cards passed in have the same suit
-        #     if len(suits_seen) == 1:
-        #         straight_flush_cards.append(card_list)
-        #
-        # return straight_flush_cards
+        # loop in window size of 5, and determine if the current 5 card ranks make up a straight (consecutive ranks)
+        while index + 4 <= final_index:
+            next_five_cards = same_suit_cards[index: index + 5]
+            next_five_indices = [card.card_value.rank_index for card in next_five_cards]
+
+            # if a straight is detected, add this in the list of possible straights
+            if self._every_element_increasing_by_one(next_five_indices):
+                collections_of_straight_flushes.append(next_five_cards)
+
+            index += 1
+
+        return collections_of_straight_flushes
 
     @property
     def _card_suit_counts(self):
@@ -100,7 +105,7 @@ class FiveCardInARowValidatorHelper:
         return {
             suit: suit_count
             for suit, suit_count in self._card_suit_counts.items()
-            if suit_count == count
+            if suit_count >= count
         }
 
     def _every_element_increasing_by_one(self, rank_indexes):

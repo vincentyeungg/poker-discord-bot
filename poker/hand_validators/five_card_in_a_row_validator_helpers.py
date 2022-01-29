@@ -64,6 +64,45 @@ class FiveCardInARowValidatorHelper:
             cards[-1] for cards in self._dict_of_ranks_storing_lists_of_cards_of_the_same_rank.values()
         ]
 
+    @property
+    def _list_containing_five_consecutive_ordered_cards_of_same_suit(self):
+        # returns a list of possible lists of 5 consecutive cards of the same rank, else return an empty list
+
+        # extract the cards that have the same suit
+        
+
+
+        # straight_flush_cards = []
+        # for card_list in self._collections_of_five_straight_cards_in_a_row:
+        #     # use a set to remove any duplicates
+        #     suits_seen = set()
+        #     for card in card_list:
+        #         suits_seen.add(card.suit)
+        #     # if the suits_seen only contains one suit, then all cards passed in have the same suit
+        #     if len(suits_seen) == 1:
+        #         straight_flush_cards.append(card_list)
+        #
+        # return straight_flush_cards
+
+    @property
+    def _card_suit_counts(self):
+        """ build dictionary to hold occurrences of cards suits seen """
+        card_suit_counts = {}
+        for card in self.cards:
+            if card.suit in card_suit_counts:
+                card_suit_counts[card.suit] += 1
+            else:
+                card_suit_counts[card.suit] = 1
+        return card_suit_counts
+
+    def _suits_with_counts(self, count):
+        """ returns a dictionary with items that have a specified count """
+        return {
+            suit: suit_count
+            for suit, suit_count in self._card_suit_counts.items()
+            if suit_count == count
+        }
+
     def _every_element_increasing_by_one(self, rank_indexes):
         # helper function to determine if card ranks are of consecutive order
         starting_rank_index = rank_indexes[0]

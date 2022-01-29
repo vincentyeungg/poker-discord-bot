@@ -9,6 +9,7 @@ class FullHouseValidator(ValidatorHelpers):
     """
 
     def __init__(self, cards):
+        super().__init__(cards)
         self.cards = cards
         self.name = "Full House"
 

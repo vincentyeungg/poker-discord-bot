@@ -1,7 +1,7 @@
 import pytest
 
 from poker.card import Card
-from poker.hand_validators import FullHouseValidator
+from poker.hand_validators import FourOfAKindValidator
 
 
 @pytest.fixture
@@ -13,32 +13,31 @@ def testing_cards():
     return [
         Card(rank="8", suit="Clubs"),
         Card(rank="8", suit="Diamonds"),
+        Card(rank="8", suit="Hearts"),
         Card(rank="8", suit="Spades"),
-        Card(rank="Jack", suit="Hearts"),
         Card(rank="Jack", suit="Spades"),
         Card(rank="Queen", suit="Diamonds"),
         Card(rank="Queen", suit="Spades")
     ]
 
 
-def test_validate_full_house_hand_in_collection(testing_cards):
-    validator = FullHouseValidator(testing_cards)
+def test_validate_four_of_a_kind_hand_in_collection(testing_cards):
+    validator = FourOfAKindValidator(testing_cards)
 
     assert validator.is_valid()
 
 
-def test_returns_full_house_name(testing_cards):
-    validator = FullHouseValidator(testing_cards)
-    assert validator.name == "Full House"
+def test_returns_four_of_a_kind_name(testing_cards):
+    validator = FourOfAKindValidator(testing_cards)
+    assert validator.name == "Four of a Kind"
 
 
-def test_returns_full_house_cards_in_hand(testing_cards):
-    validator = FullHouseValidator(testing_cards)
+def test_returns_four_of_a_kind_cards_in_hand(testing_cards):
+    validator = FourOfAKindValidator(testing_cards)
 
     assert validator.valid_cards() == [
         Card(rank="8", suit="Clubs"),
         Card(rank="8", suit="Diamonds"),
-        Card(rank="8", suit="Spades"),
-        Card(rank="Queen", suit="Diamonds"),
-        Card(rank="Queen", suit="Spades")
+        Card(rank="8", suit="Hearts"),
+        Card(rank="8", suit="Spades")
     ]

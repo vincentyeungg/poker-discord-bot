@@ -94,3 +94,30 @@ def test_returns_collection_of_lists_of_valid_straight_hand_from_hand(testing_ca
         [six_of_clubs, seven_of_diamonds, eight_of_hearts, nine_of_clubs, ten_of_diamonds],
         [seven_of_diamonds, eight_of_hearts, nine_of_clubs, ten_of_diamonds, jack_of_spades]
     ]
+
+
+def test_returns_collection_of_lists_of_valid_straight_flush_cards_from_hand():
+    six_of_clubs = Card(rank="6", suit="Clubs")
+    seven_of_clubs = Card(rank="7", suit="Clubs")
+    eight_of_clubs = Card(rank="8", suit="Clubs")
+    eight_of_spades = Card(rank="8", suit="Spades")
+    nine_of_clubs = Card(rank="9", suit="Clubs")
+    ten_of_clubs = Card(rank="10", suit="Clubs")
+    jack_of_clubs = Card(rank="Jack", suit="Clubs")
+
+    cards = [
+        six_of_clubs,
+        seven_of_clubs,
+        eight_of_clubs,
+        eight_of_spades,
+        nine_of_clubs,
+        ten_of_clubs,
+        jack_of_clubs
+    ]
+
+    validator = FiveCardInARowValidatorHelper(cards)
+
+    assert validator._list_containing_five_consecutive_ordered_cards_of_same_suit == [
+        [six_of_clubs, seven_of_clubs, eight_of_clubs, nine_of_clubs, ten_of_clubs],
+        [seven_of_clubs, eight_of_clubs, nine_of_clubs, ten_of_clubs, jack_of_clubs]
+    ]

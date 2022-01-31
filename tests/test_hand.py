@@ -25,6 +25,13 @@ def test_hand_starts_out_with_no_cards():
     assert hand.cards == []
 
 
+def test_get_length_of_hand(testing_cards):
+    hand = Hand()
+    hand.add_cards(testing_cards)
+
+    assert len(hand) == 7
+
+
 def test_shows_current_hand_in_technical_representation():
     cards = [
         Card(rank="10", suit="Diamonds"),

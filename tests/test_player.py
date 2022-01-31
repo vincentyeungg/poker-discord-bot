@@ -34,6 +34,10 @@ def test_create_player_and_store_name_and_hand_and_balance(testing_cards, player
     assert player.hand.cards == testing_cards
 
 
+def test_player_initial_hand_is_empty(player):
+    assert player.hand.cards == []
+
+
 def test_player_will_play_initially(player):
     assert player.play
 
@@ -83,8 +87,8 @@ def test_player_makes_bet_with_valid_amount(player):
 
 
 def test_player_makes_bet_with_invalid_amount(player):
-    assert player.place_bet(200.0) == False
+    assert player.place_bet(200.0) == -1
 
 
 def test_player_enters_invalid_amount(player):
-    assert player.place_bet(-50.0) == False
+    assert player.place_bet(-50.0) == -1

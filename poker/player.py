@@ -31,6 +31,6 @@ class Player:
         if not amount <= 0:
             if self.balance >= amount:
                 self.balance -= amount
-                return True
+                return amount
 
-        return False
+        return -1

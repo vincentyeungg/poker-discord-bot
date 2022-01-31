@@ -40,14 +40,18 @@ class Hand:
         cards_as_strings = [str(card) for card in self.cards]
         return ", ".join(cards_as_strings)
 
+    def __len__(self):
+        return len(self.cards)
+
     def add_cards(self, cards):
         """
         to add a list of cards to the current hand, for initial round, and for additional community cards.
         """
         cards_copy = self.cards[:]
         cards_copy.extend(cards)
+        # sort the cards in current hand
         cards_copy.sort()
-        self.cards = cards
+        self.cards = cards_copy
 
     def best_hand(self):
         for validator_class in self._VALIDATORS:

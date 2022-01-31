@@ -28,5 +28,5 @@ class Deck:
         del self.cards[-1 * number_of_cards:]
         return removed_cards
 
-    def shuffle(self):
+    def shuffle_cards(self):
         shuffle(self.cards)

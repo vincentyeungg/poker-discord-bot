@@ -75,7 +75,7 @@ def test_can_shuffle_current_hand_in_random_order(mock_shuffle, testing_cards):
     deck = Deck()
     deck.add_cards(testing_cards)
 
-    deck.shuffle()
+    deck.shuffle_cards()
 
     # assert random is called once
     mock_shuffle.assert_called_once_with(testing_cards)

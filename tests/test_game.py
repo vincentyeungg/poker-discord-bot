@@ -20,7 +20,7 @@ def testing_objs():
     test_deck = Deck()
 
     # create game object
-    test_game = Game(test_deck)
+    test_game = Game()
 
     test_players = [test_player1, test_player2]
 

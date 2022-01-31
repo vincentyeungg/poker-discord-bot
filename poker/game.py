@@ -27,11 +27,16 @@ class Game:
     This class represents the game of poker which consists of players, cards, decks and a sum accumulation of bets.
     """
 
-    def __init__(self, deck):
+    def __init__(self):
         # when a game is initiated, no cards and players are created yet
         self.players = []
-        self.deck = deck
+        self.deck = Deck()
         self.bet_accumulated = 0.0
+        self.state = GameState.NO_GAME
+
+    def _awaiting_players_to_join(self):
+        # wait for a list of accumulated players
+        self.state = GameState.WAITING_FOR_PLAYERS
 
     def start_game(self, players):
         # get a list of players and add it in the players list of the game

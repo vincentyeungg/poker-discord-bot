@@ -54,10 +54,10 @@ class Hand:
         self.cards = cards_copy
 
     def best_hand(self):
-        for validator_class in self._VALIDATORS:
+        for index, validator_class in enumerate(self._VALIDATORS):
             validator = validator_class(self.cards)
 
             # check to see if current cards can formulate the hand of the respective class
             if validator.is_valid():
-                # return the name of the class, and the cards that make up the hand
-                return (validator.name, validator.valid_cards())
+                # return the index of the validator, name of the class, and the cards that make up the hand
+                return (index, validator.name, validator.valid_cards())

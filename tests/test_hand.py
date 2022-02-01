@@ -56,6 +56,7 @@ def test_determines_best_hand_based_on_cards_in_current_collection(testing_cards
     hand.add_cards(testing_cards)
 
     assert hand.best_hand() == (
+        4,
         "Flush",
         [
             Card(rank="3", suit="Clubs"),

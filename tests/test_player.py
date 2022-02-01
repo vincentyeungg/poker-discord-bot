@@ -19,10 +19,9 @@ def testing_cards():
 
 @pytest.fixture
 def player():
-    hand = Hand()
     name = "Test Player 1"
 
-    player = Player(name=name, hand=hand)
+    player = Player(name=name)
 
     return player
 
@@ -43,9 +42,8 @@ def test_player_will_play_initially(player):
 
 
 def test_player_can_add_cards_into_hand():
-    hand = Hand()
     name = "Test Player 1"
-    player = Player(name=name, hand=hand)
+    player = Player(name=name)
 
     cards = [Card(rank="2", suit="Clubs"), Card(rank="7", suit="Diamonds")]
 
@@ -58,7 +56,7 @@ def test_obtain_best_hand_based_on_cards_from_collection(testing_cards, player):
     player.add_cards(testing_cards)
 
     # depends on the testing cards hand
-    assert player.best_hand() == "Flush"
+    assert player.best_hand_name() == "Flush"
 
 
 def test_obtain_cards_that_make_up_the_best_hand(testing_cards, player):

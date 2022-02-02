@@ -44,7 +44,7 @@ def test_has_string_representation_with_suit_and_rank(nine_of_spades):
 
 
 def test_has_technical_representation(nine_of_spades):
-    assert (repr(nine_of_spades), "Card('9', 'Spades')")
+    assert repr(nine_of_spades) == "Card('9', 'Spades')"
 
 
 def test_card_has_four_possible_suit_options():

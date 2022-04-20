@@ -11,6 +11,7 @@ token = os.getenv('BOT_TOKEN')
 
 # setup connection to discord
 client = discord.Client()
+
 # dictionary to keep track of games for each channel, allowing only 1 game per channel
 live_games = {}
 

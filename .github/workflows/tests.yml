@@ -1,0 +1,16 @@
+name: Tests
+
+on:
+  pull_request
+  
+jobs:
+  build:
+    # start up a ubuntu machine
+    runs-on: ubuntu-latest
+    steps:
+      # take all the code out of our project
+      - uses: actions/checkout@v2
+      - name: install dependencies in requirements.txt
+        run: pip3 install -r requirements.txt
+      - name: run tests in pytest
+        run: pytest tests/
